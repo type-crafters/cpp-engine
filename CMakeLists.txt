@@ -1,17 +1,16 @@
 cmake_minimum_required(VERSION 3.22)
 
-# Project Name
-project(CPPEngine LANGUAGES CXX)
+project(CppEngine
+    VERSION 0.0.1
+    DESCRIPTION "3D game engine written in C++"
+    LANGUAGES CXX
+)
 
-# C++ Version
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Source files
 file(GLOB_RECURSE ENGINE_SRC src/*.cpp)
 
-# Create library target
-add_library(cppeng STATIC ${ENGINE_SRC})
-
-# Public headers
-target_include_directories(cppeng PUBLIC include)
+add_library(cppengine STATIC src/**/*.cpp)
+target_include_directories(cppengine PUBLIC include) 
