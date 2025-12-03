@@ -6,11 +6,12 @@ project(CppEngine
     LANGUAGES CXX
 )
 
-set(CMAKE_CXX STANDARD 20)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-file(GLOB_RECURSE ENGINE_SRC src/*.cpp)
+file(GLOB_RECURSE ENGINE_SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 
-add_library(cppengine STATIC src/**/*.cpp)
-target_include_directories(cppengine PUBLIC include) 
+add_library(cppengine STATIC ${ENGINE_SRC})
+
+target_include_directories(cppengine PUBLIC include)
