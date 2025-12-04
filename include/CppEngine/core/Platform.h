@@ -1,9 +1,14 @@
 #pragma once
+#include <string>
 
-enum class Platform {
-    WIN_32,
-    DARWIN,
-    LINUX,
-    UNIX,
-    UNKNOWN
-};
+using std::string;
+
+namespace CppEngine {
+    enum class Platform {
+        WIN_32,
+        DARWIN,
+        LINUX,
+        UNIX,
+        UNKNOWN
+    };
+}
