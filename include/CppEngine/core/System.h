@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
-#include "Platform.h"
-#include "Arch.h"
+#include <CppEngine/core/Platform.h>
+#include <CppEngine/core/Arch.h>
+
 
 using std::string;
 

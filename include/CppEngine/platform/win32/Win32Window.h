@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
 #include <windows.h>
-#include "Window.h"
+#include <CppEngine/core/Window.h>
+
 
 using std::string;
 
