@@ -1,17 +1,29 @@
-cmake_minimum_required(VERSION 3.22)
+cmake_minimum_required(VERSION 3.20)
 
-project(CppEngine
-    VERSION 0.0.1
-    DESCRIPTION "3D game engine written in C++"
-    LANGUAGES CXX
+project(CppEngine LANGUAGES CXX)
+
+add_library(CppEngine)
+
+target_compile_features(CppEngine PUBLIC cxx_std_20)
+
+target_include_directories(CppEngine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+file(GLOB_RECURSE ENGINE_SOURCES
+    CONFIGURE_DEPENDS
+    src/CppEngine/*.cpp
 )
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+file(GLOB_RECURSE ENGINE_HEADERS
+    CONFIGURE_DEPENDS
+    include/CppEngine/*.h
+    include/CppEngine/*.hpp
+)
 
-file(GLOB_RECURSE ENGINE_SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
-
-add_library(cppengine STATIC ${ENGINE_SRC})
-
-target_include_directories(cppengine PUBLIC include)
+target_sources(CppEngine
+    PRIVATE 
+        ${ENGINE_SOURCES}
+    PUBLIC
+        FILE_SET HEADERS
+        BASE_DIRS include
+        FILES ${ENGINE_HEADERS}
+)
