@@ -1,4 +1,4 @@
-#include "System.h"
+#include <CppEngine/core/System.h>
 
 namespace CppEngine {
     Platform System::getPlatform() {

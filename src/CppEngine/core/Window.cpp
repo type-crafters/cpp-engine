@@ -1,4 +1,4 @@
-#include "Window.h"
+#include <CppEngine/core/Window.h>
 
 namespace CppEngine {
     

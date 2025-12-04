@@ -1,6 +1,7 @@
 #include <stdexcept>
 #include <windows.h> 
-#include "Win32Window.h"
+#include <CppEngine/platform/win32/Win32Window.h>
+
 
 namespace CppEngine {
     const int Window::SCREEN_HEIGHT = GetSystemMetrics(SM_CYSCREEN);
