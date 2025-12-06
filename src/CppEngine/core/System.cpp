@@ -1,4 +1,5 @@
 #include <CppEngine/core/System.h>
+#include <filesystem>
 
 namespace CppEngine {
     Platform System::getPlatform() {
@@ -35,5 +36,9 @@ namespace CppEngine {
         #else
             return Arch::UNKNOWN;
         #endif
+    }
+
+    string System::getCwd() {
+        return std::filesystem::current_path().string();
     }
 }

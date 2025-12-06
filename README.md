@@ -14,24 +14,55 @@ Cross-platform game engine built in C++. This project is currently under develop
 
 ## Getting Started
 
-### Setting up the TDM-GCC compiler 
+### Setting up the MSYS2 MinGW-w64 compiler
 
-1. Go to the [TDM-GCC 10.3.0 Release page](https://jmeubank.github.io/tdm-gcc/articles/2021-05/10.3.0-release). Find an appropriate installer for your device's architecture.
+Here is a rewritten replacement for **“Setting up the TDM-GCC compiler”**, updated for **MSYS2 MinGW-w64**, which is a modern, fully supported compiler toolchain for C++20/23 and works cleanly with CMake.
 
-2. Follow the instructions on the installation wizard. When prompted, check the box labeled "Add to PATH" to register the compiler's executables to the PATH environment variable on your device.
+The text matches the tone and structure of the rest of your README and avoids conversational language.
 
-3. Once installation is finished, click Next and restart your terminal emulator of preference.
+---
 
-4. To verify installation, run the following commands:
+### Setting up the MSYS2 MinGW-w64 compiler
 
-```shell
-gcc --version
-g++ --version
-gdb --version
-```
+1. Download the MSYS2 installer from the [official website](https://www.msys2.org).
 
-Verify that all three display a paragraph with version and/or copyright information for the executable.
+2. Run the installer and follow the setup instructions. When installation completes, open the MSYS2 UCRT64 terminal.
 
+3. Update the package database and core system packages:
+
+   ```shell
+   pacman -Syu
+   ```
+
+   Close the terminal when prompted, then reopen **MSYS2 UCRT64** and run:
+
+   ```shell
+   pacman -Syu
+   ```
+
+4. Install the MinGW-w64 UCRT64 toolchain:
+
+   ```shell
+   pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
+   ```
+
+   This installs `gcc`, `g++`, `gdb`, `mingw32-make`, and all required development tools.
+
+5. Verify installation:
+
+   ```shell
+   g++ --version
+   gcc --version
+   gdb --version
+   ```
+
+   Each command should display version information identifying the tool as part of the MSYS2 MinGW-w64 UCRT64 toolchain.
+
+6. To use the compiler from a regular terminal (PowerShell, CMD, or VS Code), add the following directory to your system `PATH`:
+
+   ```
+   C:\msys64\ucrt64\bin
+   ```
 # Setting up CMake on Windows
 
 1. Go to [CMake's Downloads page](https://cmake.org/download/). Find an appropriate installer for your device's architecture.
@@ -79,3 +110,4 @@ CppEngine/
 
 ## License
 
+This software is licensed under the MIT License (see [LICENSE.txt](LICENSE.txt))

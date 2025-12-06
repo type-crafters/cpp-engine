@@ -1,19 +1,43 @@
 #pragma once
-#include <string>
 #include <windows.h>
 #include <CppEngine/core/Window.h>
-
-
-using std::string;
 
 namespace CppEngine {
     class Win32Window : public Window {
         private:
-            static const WCHAR* _WINDOW_CLASSNAME;
-            void* _handle;
+            HWND _handle;
+            static const string _WINDOW_CLASSNAME;
+            static LRESULT CALLBACK _windowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
         public:
+            // getters & setters
+            string getTitle() override;
+            void setTitle(string title) override;
+            
+            int getX() override;
+            void setX(int x) override;
+
+            int getY() override;
+            void setY(int y) override;
+
+            int getWidth() override;
+            void setWidth(int width) override;
+
+            int getHeight() override;
+            void setHeight(int height) override;
+
+            int getClientWidth() override;
+
+            int getClientHeight() override;
+
+            void setDesktopIcon(string abspath) override;
+
+            void setTitleBarIcon(string abspath) override;
+
+            // constructor & destructor
             Win32Window(string title, int x, int y, int width, int height);
             ~Win32Window();
+
+            // instance methods
             void show() override;
     };
 }

@@ -1,7 +1,5 @@
 #pragma once
-#include <string>
-
-using std::string;
+#include <CppEngine/core/Base.h>
 
 namespace CppEngine {
     enum class Platform {
