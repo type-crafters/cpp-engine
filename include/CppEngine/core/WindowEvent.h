@@ -1,8 +1,8 @@
 #pragma once
-#include <CppEngine/core/Base.h>
+#include <cppengine/core/Base.h>
 #include <variant>
 
-namespace CppEngine {
+namespace cppengine {
     enum class WindowEvent {
         CLOSE,
         RESIZE,

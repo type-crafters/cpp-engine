@@ -1,9 +1,9 @@
 #pragma once
-#include <CppEngine/core/Base.h>
-#include <CppEngine/core/Platform.h>
-#include <CppEngine/core/Arch.h>
+#include <cppengine/core/Base.h>
+#include <cppengine/core/Platform.h>
+#include <cppengine/core/Arch.h>
 
-namespace CppEngine {
+namespace cppengine {
     class System {
         public:
             static Platform getPlatform();

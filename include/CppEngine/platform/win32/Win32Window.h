@@ -1,8 +1,8 @@
 #pragma once
 #include <windows.h>
-#include <CppEngine/core/Window.h>
+#include <cppengine/core/Window.h>
 
-namespace CppEngine {
+namespace cppengine {
     class Win32Window : public Window {
         private:
             HWND _handle;

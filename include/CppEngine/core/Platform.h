@@ -1,7 +1,7 @@
 #pragma once
-#include <CppEngine/core/Base.h>
+#include <cppengine/core/Base.h>
 
-namespace CppEngine {
+namespace cppengine {
     enum class Platform {
         WIN_32,
         DARWIN,

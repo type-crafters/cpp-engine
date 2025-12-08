@@ -1,8 +1,8 @@
 #pragma once
-#include <CppEngine/core/Base.h>
-#include <CppEngine/core/WindowEvent.h>
+#include <cppengine/core/Base.h>
+#include <cppengine/core/WindowEvent.h>
 
-namespace CppEngine {
+namespace cppengine {
     using Listener = Function<void(const EventData&)>;
     
     class Window {

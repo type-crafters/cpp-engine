@@ -1,7 +1,7 @@
 #include <stdexcept> 
-#include <CppEngine/platform/win32/Win32Window.h>
+#include <cppengine/platform/win32/Win32Window.h>
 
-namespace CppEngine {
+namespace cppengine {
     const int Window::SCREEN_HEIGHT = GetSystemMetrics(SM_CYSCREEN);
     const int Window::SCREEN_WIDTH = GetSystemMetrics(SM_CXSCREEN);
     const string Win32Window::_WINDOW_CLASSNAME = "Win32Window::WindowClass";

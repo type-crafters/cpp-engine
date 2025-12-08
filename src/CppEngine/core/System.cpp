@@ -1,7 +1,7 @@
-#include <CppEngine/core/System.h>
+#include <cppengine/core/System.h>
 #include <filesystem>
 
-namespace CppEngine {
+namespace cppengine {
     Platform System::getPlatform() {
         #if defined(__WIN32)
             return Platform::WIN_32;

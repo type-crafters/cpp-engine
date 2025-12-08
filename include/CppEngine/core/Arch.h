@@ -1,7 +1,7 @@
 #pragma once
-#include <CppEngine/core/Base.h>
+#include <cppengine/core/Base.h>
 
-namespace CppEngine {
+namespace cppengine {
     enum class Arch {
         X86,
         X86_64,
