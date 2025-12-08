@@ -31,6 +31,8 @@ namespace CppEngine {
             virtual int getHeight() = 0;
             virtual void setHeight(int height) = 0;
 
+            virtual bool isOpen() = 0;
+
             virtual int getClientWidth() = 0;
 
             virtual int getClientHeight() = 0;
@@ -68,6 +70,7 @@ namespace CppEngine {
                 _listeners[(int)E].push_back(std::move(wrapper));
             }
 
-            virtual void show() = 0;
+            virtual void display() = 0;
+            virtual void processEvents() = 0;
     };
 }

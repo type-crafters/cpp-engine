@@ -8,6 +8,7 @@ namespace CppEngine {
             HWND _handle;
             static const string _WINDOW_CLASSNAME;
             static LRESULT CALLBACK _windowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
+            bool _open;
         public:
             // getters & setters
             string getTitle() override;
@@ -25,6 +26,8 @@ namespace CppEngine {
             int getHeight() override;
             void setHeight(int height) override;
 
+            bool isOpen() override;
+
             int getClientWidth() override;
 
             int getClientHeight() override;
@@ -38,6 +41,7 @@ namespace CppEngine {
             ~Win32Window();
 
             // instance methods
-            void show() override;
+            void display() override;
+            void processEvents() override;
     };
 }

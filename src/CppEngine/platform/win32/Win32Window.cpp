@@ -22,7 +22,7 @@ namespace CppEngine {
             switch (msg) {
                 case WM_CLOSE:
                     window->emitEvent<WindowEvent::CLOSE>({});
-                    DestroyWindow(hwnd);
+                    window -> _open = false;
                     return 0;
                 case WM_SIZE:
                     window -> emitEvent<WindowEvent::RESIZE>({ 
@@ -43,11 +43,12 @@ namespace CppEngine {
                     window -> emitEvent<WindowEvent::KEYUP>({ (int) wParam });
                     return 0;
                 case WM_DESTROY:
+                    window -> _open = false;
                     PostQuitMessage(0);
                     return 0;
                 case WM_NCDESTROY:
                     SetWindowLongPtr(hwnd, GWLP_USERDATA, 0);
-                    delete window;
+                    window -> _open = false;
                     return 0;
             }
         }
@@ -56,14 +57,18 @@ namespace CppEngine {
     }
 
     string Win32Window::getTitle() {
-        int length = GetWindowTextLengthA(_handle);
-        if (length <= 0) return "";
-        
-        string title(length, '\0');
+        int titleLength = GetWindowTextLengthA(_handle);
+        if (titleLength <= 0) {
+            return "";
+        }
 
-        GetWindowTextA(_handle, title.data(), length + 1);
+        string title(titleLength + 1, '\0');
+        int copyLength = GetWindowTextA(_handle, title.data(), titleLength + 1);
+  
+        title.resize(copyLength);
         return title;
     }
+
 
     void Win32Window::setTitle(string title) {
         SetWindowTextA(_handle, title.c_str());
@@ -153,6 +158,10 @@ namespace CppEngine {
         );
     }
 
+    bool Win32Window::isOpen() {
+        return _open;
+    }
+
     int Win32Window::getClientWidth() {
         RECT rect;
         GetClientRect(_handle, &rect);
@@ -166,11 +175,11 @@ namespace CppEngine {
     }
 
     void Win32Window::setDesktopIcon(string abspath) {
-
+        // @todo implement
     }
 
     void Win32Window::setTitleBarIcon(string abspath) {
-
+        // @todo implement
     }
 
     // constructor and destructor
@@ -183,12 +192,12 @@ namespace CppEngine {
         windowClass.cbClsExtra = 0;
         windowClass.cbWndExtra = 0;
         windowClass.hInstance = GetModuleHandle(NULL);
-        windowClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+        windowClass.hIcon = LoadIcon(NULL, IDI_APPLICATION); // @todo change
         windowClass.hCursor = LoadCursor(NULL, IDC_ARROW);
         windowClass.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
         windowClass.lpszMenuName = NULL;
         windowClass.lpszClassName = _WINDOW_CLASSNAME.c_str();
-        windowClass.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
+        windowClass.hIconSm = LoadIcon(NULL, IDI_APPLICATION); // @todo change
 
 
         ATOM windowClassId = RegisterClassExA(&windowClass);
@@ -230,12 +239,25 @@ namespace CppEngine {
         if (!_handle) {
             throw std::runtime_error("Window handle creation has failed.");
         }
+
+        _open = true;
     }
 
-    void Win32Window::show() {
+    Win32Window::~Win32Window() {
+        DestroyWindow(_handle);
+    }
+
+    void Win32Window::display() {
         ShowWindow(_handle, SW_SHOW);
         UpdateWindow(_handle);
     }
 
-    Win32Window::~Win32Window() { }
+    void Win32Window::processEvents() {
+        MSG msg{};
+        while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
+            // @todo notify engine on WM_QUIT
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        }
+    }
 } 
