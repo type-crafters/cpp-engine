@@ -22,4 +22,4 @@ CppEngine's System API exposes information about the underlying process and hard
 | --- | --- | --- |
 | `static Platform` | `getPlatform()` | Returns an enum representation of the current operating system. |
 | `static Arch` | `getArch()` | Returns an enum representation of the current hardware architecture type. |
-| `static path` | `getCwd()` | Returns a string view of the current working directory. |
+| `static path` | `getCwd()` | Returns a path object representing the current working directory. |

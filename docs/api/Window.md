@@ -6,6 +6,7 @@ CppEngine's Window API provides a platform-independent way of creating and inter
 
 ### Header files:
 
+- [Window.h](/include/cppengine/core/Window.h)
 - [WindowEvent.h](/include/cppengine/core/WindowEvent.h)
 - [Win32Window.h](/include/cppengine/platform/win32/Win32Window.h)
 
