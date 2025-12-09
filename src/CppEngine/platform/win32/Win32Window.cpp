@@ -175,11 +175,39 @@ namespace cppengine {
     }
 
     void Win32Window::setDesktopIcon(string abspath) {
-        // @todo implement
+        HICON desktopIcon = (HICON) LoadImageA(
+            nullptr,
+            abspath.c_str(),
+            IMAGE_ICON,
+            0, 0,
+            LR_LOADFROMFILE | LR_DEFAULTSIZE
+        );
+
+        if (!desktopIcon) return;
+
+        if (_desktopIcon) DestroyIcon(_desktopIcon);
+
+        _desktopIcon = desktopIcon;
+
+        SendMessageA(_handle, WM_SETICON, ICON_BIG, (LPARAM) _desktopIcon);
     }
 
     void Win32Window::setTitleBarIcon(string abspath) {
-        // @todo implement
+        HICON titleBarIcon = (HICON) LoadImageA(
+            nullptr,
+            abspath.c_str(),
+            IMAGE_ICON,
+            0, 0,
+            LR_LOADFROMFILE | LR_DEFAULTSIZE
+        );
+
+        if (!titleBarIcon) return;
+
+        if (_titleBarIcon) DestroyIcon(_titleBarIcon);
+
+        _titleBarIcon = titleBarIcon;
+
+        SendMessageA(_handle, WM_SETICON, ICON_SMALL, (LPARAM) _titleBarIcon);
     }
 
     // constructor and destructor
@@ -244,6 +272,8 @@ namespace cppengine {
     }
 
     Win32Window::~Win32Window() {
+        if (_desktopIcon) DestroyIcon(_desktopIcon);
+        if (_titleBarIcon) DestroyIcon(_titleBarIcon);
         DestroyWindow(_handle);
     }
 

@@ -8,6 +8,6 @@ namespace cppengine {
         public:
             static Platform getPlatform();
             static Arch getArch();
-            static string getCwd();
+            static path getCwd();
     };
 }

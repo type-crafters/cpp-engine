@@ -15,6 +15,24 @@ namespace cppengine {
         MOUSEUP,
         MOUSEMOVE
     };
+
+    enum class MouseButton : ubyte {
+        NONE = 0, 
+        LEFT = 1 << 0,
+        MIDDLE = 1 << 1,
+        RIGHT = 1 << 2,
+        BROWSER_BACK = 1 << 3,
+        BROWSER_FORWARD = 1 << 4
+    };
+
+    inline MouseButton operator|(MouseButton a, MouseButton b) {
+        return static_cast<MouseButton>(static_cast<int>(a) | static_cast<int>(b));
+    }
+
+    inline MouseButton operator&(MouseButton a, MouseButton b) {
+        return static_cast<MouseButton>(static_cast<int>(a) & static_cast<int>(b));
+    }
+
     struct CloseEventData { };
 
     struct ResizeEventData {
@@ -36,6 +54,8 @@ namespace cppengine {
     };
 
     struct MouseEventData {
+        MouseButton trigger;
+        MouseButton buttons;
         int clientX;
         int clientY;
     };

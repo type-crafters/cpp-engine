@@ -32,6 +32,7 @@ The following type aliases are declared inside the [<Base.h>](/include/cppengine
 | Type | Alias | Description |
 | --- | --- | --- |
 | `std::string` | `string` | A dynamically sized, C++ style character sequence |
+| `std::filesystem::path` | `path` | A platform-aware representation of filesystem paths, included in the <filesystem> header |
 | `uint8_t` | `ubyte` | An unsigned 8-bit integer type included in the `<cstdint>` header |
 | `int8_t` | `sbyte` | A signed 8-bit integer type included in the `<cstdint>` header |
 | `std::optional<T,...>` | `Optional<T...>` | A representation of a value that can be either `T` or `std::nullopt`, included in the `<optional>` header |
@@ -41,4 +42,4 @@ The following type aliases are declared inside the [<Base.h>](/include/cppengine
 | `std::unordered_map<K, V, ...>` | `HashMap<K, V, ...>` | An unordered, hash-table-based implementation of a key-value collection included in the `<unordered_map>` header |
 | `std::function<T(A...),...>` | `Function<T(A...), ...>` | A type-erased callable wrapper that can store and invoke any function object that takes `A...` arguments and returns a value of type `T` |
 
-The docs will reference these aliases, rather than their underlying types, to maintain consistency and clarity across all examples. 
+The docs will reference these aliases, rather than their underlying types, to maintain consistency and clarity across all examples.

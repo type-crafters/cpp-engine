@@ -38,7 +38,7 @@ namespace cppengine {
         #endif
     }
 
-    string System::getCwd() {
-        return std::filesystem::current_path().string();
+    path System::getCwd() {
+        return std::filesystem::current_path();
     }
 }

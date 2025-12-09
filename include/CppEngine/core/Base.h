@@ -7,9 +7,11 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <filesystem>
 
 // type aliases
 using std::string;
+using std::filesystem::path;
 using ubyte = uint8_t;
 using sbyte = int8_t;
 

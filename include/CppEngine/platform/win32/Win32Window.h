@@ -9,6 +9,8 @@ namespace cppengine {
             static const string _WINDOW_CLASSNAME;
             static LRESULT CALLBACK _windowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
             bool _open;
+            HICON _desktopIcon;
+            HICON _titleBarIcon;
         public:
             // getters & setters
             string getTitle() override;
