@@ -1,4 +1,5 @@
 #pragma once
+#include <limits.h>
 #include <cppengine/core/Base.h>
 #include <cppengine/core/WindowEvent.h>
 

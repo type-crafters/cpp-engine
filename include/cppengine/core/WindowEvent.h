@@ -1,5 +1,7 @@
 #pragma once
 #include <cppengine/core/Base.h>
+#include <cppengine/input/Mouse.h> 
+#include <cppengine/input/Keyboard.h> 
 #include <variant>
 
 namespace cppengine {
@@ -15,23 +17,6 @@ namespace cppengine {
         MOUSEUP,
         MOUSEMOVE
     };
-
-    enum class MouseButton : ubyte {
-        NONE = 0, 
-        LEFT = 1 << 0,
-        MIDDLE = 1 << 1,
-        RIGHT = 1 << 2,
-        BROWSER_BACK = 1 << 3,
-        BROWSER_FORWARD = 1 << 4
-    };
-
-    inline MouseButton operator|(MouseButton a, MouseButton b) {
-        return static_cast<MouseButton>(static_cast<int>(a) | static_cast<int>(b));
-    }
-
-    inline MouseButton operator&(MouseButton a, MouseButton b) {
-        return static_cast<MouseButton>(static_cast<int>(a) & static_cast<int>(b));
-    }
 
     struct CloseEventData { };
 
@@ -50,12 +35,12 @@ namespace cppengine {
     struct BlurEventData { };
 
     struct KeyboardEventData {
-        int key;
+        Keyboard key;
     };
 
     struct MouseEventData {
-        MouseButton trigger;
-        MouseButton buttons;
+        Mouse trigger;
+        Mouse buttons;
         int clientX;
         int clientY;
     };

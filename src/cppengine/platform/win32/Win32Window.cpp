@@ -37,10 +37,10 @@ namespace cppengine {
                     window -> emitEvent<WindowEvent::BLUR>({});
                     return 0;
                 case WM_KEYDOWN:
-                    window -> emitEvent<WindowEvent::KEYDOWN>({ (int) wParam });
+                    window -> emitEvent<WindowEvent::KEYDOWN>({ Keyboard::UNKNOWN }); // @todo implement
                     return 0;
                 case WM_KEYUP:
-                    window -> emitEvent<WindowEvent::KEYUP>({ (int) wParam });
+                    window -> emitEvent<WindowEvent::KEYUP>({ Keyboard::UNKNOWN }); // @todo implement
                     return 0;
                 case WM_DESTROY:
                     window -> _open = false;
